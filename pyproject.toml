@@ -1,0 +1,23 @@
+[project]
+name = "felix-plan-b"
+version = "0.1.0"
+description = "Felix's Plan B"
+readme = "README.md"
+authors = [
+    { name = "felixlau0106", email = "133904761+felixlau0106@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.141.1",
+    "openai>=3.13.0",
+    "pydantic>=2.13.5",
+    "python-dotenv>=1.0.1",
+    "uvicorn>=0.52.4",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.13,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv]
+package = false

@@ -1,0 +1,45 @@
+# --- models (download locally, never git) ---
+*.gguf
+*.ggml
+*.bin
+!frontend/src-tauri/bin/
+
+# --- llama.cpp / CUDA runtime ---
+/llama/
+*.zip
+
+# --- Python / uv ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+.venv/
+venv/
+.env
+.env.*
+.python-version
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --- Node / Vite ---
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# --- Tauri / Cargo ---
+frontend/src-tauri/target/
+frontend/src-tauri/gen/schemas/
+*.pdb
+*.exe
+!frontend/src-tauri/**/*.rs
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
