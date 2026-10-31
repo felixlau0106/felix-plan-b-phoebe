@@ -345,14 +345,12 @@ def compaction(companion: str):
     content = "Compacted context: " + response.choices[0].message.content + "\n(Keeping last 5 messages in history for more detailed context)"
     system_message("Compaction", content)
     keep = messages_history[companion][-5:]  # Keep the last 5 messages for context
-    messages_history[companion] = [
-        message for message in messages_history[companion]
-        if message["role"] == "system"
-        and not message["content"].startswith("Compacted context:")
-    ]
-    messages_history[companion].append({"role": "system", "content": "Compacted context: " + content})
+    if "grok" in settings["model"]:
+        messages_history[companion].append({"role": "system", "content": "Compacted context: " + content})
+    else:
+        messages_history[companion].append({"role": "user", "content": "[System: Compacted context: " + content + "]"})
     messages_history[companion].extend(keep)
-
+    
 def get_main_chat_context():
     system_message("SubChat", "Retrieving main chat context...")
     if not messages_history[settings["companion"]]:
